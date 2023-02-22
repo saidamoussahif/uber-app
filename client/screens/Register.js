@@ -183,36 +183,13 @@ const Signup = props => {
               width: '78%',
               paddingRight: 16
             }}>
-            <Text style={{color: 'grey', fontSize: 16}}>
-              By signing in, you agree to our{' '}
-            </Text>
-            <Text style={{color: green, fontWeight: 'bold', fontSize: 16}}>
-              Terms & Conditions
-            </Text>
-          </View>
-
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent :"center",
-              width: '78%',
-              paddingRight: 16,
-              marginBottom: 10
-            }}>
-            <Text style={{color: 'grey', fontSize: 16}}>
-              and {" "}
-            </Text>
-            <Text style={{color: green, fontWeight: 'bold', fontSize: 16}}>
-              Privacy Policy
-            </Text>
+            
           </View>
           <Btn
             textColor="white"
             bgColor={green}
             btnLabel="Signup"
             Press={() => {
-              alert('Accoutn created');
               props.navigation.navigate('Login');
             }}
           />

@@ -67,15 +67,28 @@ const [region, setRegion] = useState({
           }}
           title="Scooter 1"
           description="Scooter 1"
+          image={require("../assets/escooter.png")}
         />
 
         <Marker
           coordinate={{
-            latitude: 32.298744,
-            longitude: -9.227961,
+            latitude: 32.304329,
+            longitude:  -9.194209,
           }}
           title="Scooter 2"
           description="Scooter 2"
+          image={require("../assets/escooter.png")}
+                  
+        />
+
+        <Marker
+          coordinate={{
+            latitude: 32.289819,
+            longitude:-9.220130,
+          }}
+          title="Scooter 2"
+          description="Scooter 2"
+          image={require("../assets/escooter.png")}
                   
         />
         </MapView>
