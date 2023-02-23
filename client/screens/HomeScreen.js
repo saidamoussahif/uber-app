@@ -1,8 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 // import Background from "../Components/Background";
-import Btn from "../Components/Btn";
-import { green } from "../Components/Constants";
+// import Btn from "../Components/Btn";
+// import { green } from "../Components/Constants";
 
 const Home = (props) => {
   return (
@@ -15,7 +15,7 @@ const Home = (props) => {
           Welcome to E-scooter Tracker
         </Text>
       </View>
-      <Btn
+      {/* <Btn
         bgColor={green}
         textColor="white"
         btnLabel="Login"
@@ -26,8 +26,10 @@ const Home = (props) => {
         textColor={green}
         btnLabel="Register"
         Press={() => props.navigation.navigate("Register")}
-      />
+      /> */}
 	</View>
+
+
     // </Background>
   );
 };

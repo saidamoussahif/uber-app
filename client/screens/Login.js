@@ -1,40 +1,51 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Button, Alert } from "react-native";
-// import Background from "../Components/Background";
-// import Btn from "../Components/Btn";
 import { green } from "../Components/Constants";
 import Field from "../Components/Field";
-// import axios from "axios";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-// import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const Login = () => {
+
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
 
-  // const handleSubmit = () => {
-  // const data = { email: email, password: password };
 
   const handleSubmit = async () => {
-    const data = { email: email, password: password };
-    const url = "http://192.168.9.33:2000/api/users/login";
-    await fetch(url, data)
+    // const data = { email: email, password: password };
+    // const url = "http://192.168.9.33:2000/api/users/login";
+    fetch("http://192.168.9.33:2000/api/users/login", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        if (json.status === "success") {
-          Alert.alert("Login Success");
-          navigation.navigate("MapScreen");
-        } else {
-          Alert.alert("Login Failed");
-        }
+      .then((responseJson) => {
+        (responseJson._id)? navigation.navigate("MapScreen"):Alert.alert("Login Failed");
       })
-
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
+    // await fetch(url, data)
+
+    //   .then( console.log(response)
+    //   )
+    //   .then(
+    //     navigation.navigate("MapScreen"))
+    //     // console.log(json);
+    //     // if (json.text() === "success") {
+    //     //   Alert.alert("Login Success");
+    //     //   navigation.navigate("MapScreen");
+    //     // } else {
+    //     //   Alert.alert("Login Failed");
+    //     // }
+
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (
@@ -85,6 +96,8 @@ const Login = () => {
           value={password}
           type={password}
           onChange={setPassword}
+          secureTextEntry={true}
+
         />
         <View
           style={{
@@ -98,18 +111,20 @@ const Login = () => {
             Forgot Password ?
           </Text>
         </View>
+        {/* <Btn
+            textColor="white"
+            bgColor={green}
+            // title="Login"
+            btnLabel="Login"
+              onPress={() => props.navigation.navigate("MapScreen")}
+          /> */}
         <Button
           title="Login"
           textColor="white"
-          bgColor={green}
+          backgroundColor={green}
           // btnLabel="Login"
-          onPress={() => handleSubmit(email, password)}
+          onPress={() => props.navigation.navigate("MapScreen")}
         />
-
-        {/* <Button title="Login" onPress={() => handleSubmit(
-            email,
-            password
-          )} /> */}
         <View
           style={{
             display: "flex",
@@ -120,7 +135,7 @@ const Login = () => {
           <Text style={{ fontSize: 16, fontWeight: "bold" }}>
             Don't have an account ?{" "}
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+          <TouchableOpacity onPress={() => navigation.navigate("register")}>
             <Text style={{ color: green, fontWeight: "bold", fontSize: 16 }}>
               Register
             </Text>
